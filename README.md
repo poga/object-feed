@@ -13,7 +13,7 @@ var JSONFeed = require('json-feed')
 
 var obj = new JSONFeed({path: './feed'})
 obj.open(function () {
-  obj.set({foo: 'bar})
+  obj.set({foo: 'bar'})
   console.log(obj.key.toString('hex'))
 })
 ```
