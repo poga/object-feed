@@ -1,4 +1,4 @@
-# JSON-feed
+# json-feed
 
 A distributed live-updating JSON.
 
