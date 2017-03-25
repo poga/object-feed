@@ -1,0 +1,21 @@
+{
+  "name": "json-feed",
+  "version": "1.0.0",
+  "description": "distributed live-update json",
+  "main": "index.js",
+  "dependencies": {
+    "fast-json-patch": "^1.1.8",
+    "hypercore": "^5.4.2",
+    "inherits": "^2.0.3"
+  },
+  "devDependencies": {
+    "tape": "^4.6.3",
+    "tmp": "0.0.31"
+  },
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "keywords": ["hypercore", "json", "distributed"],
+  "author": "Poga Po<poga.bahamut@gmail.com>",
+  "license": "MIT"
+}
