@@ -11,7 +11,7 @@ In one process:
 ```javascript
 var JSONFeed = require('json-feed')
 
-var obj = new JSONFeed({path: './feed'})
+var obj = new JSONFeed('./feed')
 obj.open(function () {
   obj.set({foo: 'bar'})
   console.log(obj.key.toString('hex'))
@@ -21,7 +21,7 @@ obj.open(function () {
 In another process:
 
 ```javascript
-var obj = new JSONFeed('<KEY FROM ABOVE>', {path: './anotherfeed'})
+var obj = new JSONFeed('./another-feed', '<KEY FROM ABOVE>')
 obj.on('update', function (value) {
   console.log(value) // === {foo: 'bar'}
 })

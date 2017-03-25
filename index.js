@@ -3,14 +3,9 @@ var events = require('events')
 var inherits = require('inherits')
 var jsonpatch = require('fast-json-patch')
 
-function JSONFeed (key, opts) {
-  if (!opts && typeof key === 'object') {
-    opts = key
-    key = null
-  }
-
+function JSONFeed (path, key) {
   events.EventEmitter.call(this)
-  this.feed = hypercore(opts.path, key)
+  this.feed = hypercore(path, key)
   this.json = {}
 }
 
