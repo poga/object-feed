@@ -5,6 +5,7 @@ var tmp = require('tmp')
 tape('set', function (t) {
   var j = new JSONFeed({path: tmp.dirSync().name})
   j.open(function () {
+    t.ok(j.key)
     j.set({foo: 'bar'}, function (err, newJSON) {
       t.error(err)
       t.same(newJSON, {foo: 'bar'})
