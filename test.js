@@ -1,9 +1,9 @@
 var tape = require('tape')
-var JSONFeed = require('.')
+var ObjectFeed = require('.')
 var tmp = require('tmp')
 
 tape('set', function (t) {
-  var j = new JSONFeed(tmp.dirSync().name)
+  var j = new ObjectFeed(tmp.dirSync().name)
   j.open(function () {
     t.ok(j.key)
     j.set({foo: 'bar'}, function (err, newJSON) {
@@ -15,7 +15,7 @@ tape('set', function (t) {
 })
 
 tape('update event', function (t) {
-  var j = new JSONFeed(tmp.dirSync().name)
+  var j = new ObjectFeed(tmp.dirSync().name)
   j.open(function () {
     j.set({foo: 'bar'}, function (err, newJSON) {
       t.error(err)
@@ -30,7 +30,7 @@ tape('update event', function (t) {
 })
 
 tape('update event * 2', function (t) {
-  var j = new JSONFeed(tmp.dirSync().name)
+  var j = new ObjectFeed(tmp.dirSync().name)
   j.open(function () {
     j.set({foo: 'bar'}, function (err, newJSON) {
       t.error(err)
@@ -55,10 +55,10 @@ tape('update event * 2', function (t) {
 })
 
 tape('replicate', function (t) {
-  var j = new JSONFeed(tmp.dirSync().name)
+  var j = new ObjectFeed(tmp.dirSync().name)
   var clone
   j.open(function () {
-    clone = new JSONFeed(tmp.dirSync().name, j.feed.key)
+    clone = new ObjectFeed(tmp.dirSync().name, j.feed.key)
     clone.open(test)
   })
 

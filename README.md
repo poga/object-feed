@@ -1,17 +1,17 @@
-# json-feed
+# object-feed
 
-A distributed live-updating JSON.
+A distributed live-updating JavaScript object.
 
-`npm i json-feed`
+`npm i object-feed`
 
 ## Synopsis
 
 In one process:
 
 ```javascript
-var JSONFeed = require('json-feed')
+var ObjectFeed = require('object-feed')
 
-var obj = new JSONFeed('./feed')
+var obj = new ObjectFeed('./feed')
 obj.open(function () {
   obj.set({foo: 'bar'})
   console.log(obj.key.toString('hex'))
@@ -21,7 +21,7 @@ obj.open(function () {
 In another process:
 
 ```javascript
-var obj = new JSONFeed('./another-feed', '<KEY FROM ABOVE>')
+var obj = new ObjectFeed('./another-feed', '<KEY FROM ABOVE>')
 obj.on('update', function (value) {
   console.log(value) // === {foo: 'bar'}
 })

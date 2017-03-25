@@ -3,15 +3,15 @@ var events = require('events')
 var inherits = require('inherits')
 var jsonpatch = require('fast-json-patch')
 
-function JSONFeed (path, key) {
+function ObjectFeed (path, key) {
   events.EventEmitter.call(this)
   this.feed = hypercore(path, key)
   this.json = {}
 }
 
-inherits(JSONFeed, events.EventEmitter)
+inherits(ObjectFeed, events.EventEmitter)
 
-JSONFeed.prototype.open = function (cb) {
+ObjectFeed.prototype.open = function (cb) {
   var self = this
   this.feed.ready(function () {
     self.feed.on('error', function (err) {
@@ -37,7 +37,7 @@ JSONFeed.prototype.open = function (cb) {
   }
 }
 
-JSONFeed.prototype.set = function (obj, cb) {
+ObjectFeed.prototype.set = function (obj, cb) {
   var diff = jsonpatch.compare(this.json, obj)
   var self = this
   this.feed.append(JSON.stringify(diff), function (err) {
@@ -49,4 +49,4 @@ JSONFeed.prototype.set = function (obj, cb) {
   })
 }
 
-module.exports = JSONFeed
+module.exports = ObjectFeed
