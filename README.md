@@ -9,20 +9,20 @@ A distributed live-updating JavaScript object.
 In one process:
 
 ```javascript
-var ObjectFeed = require('object-feed')
+var Feed = require('object-feed')
 
-var obj = new ObjectFeed('./feed')
-obj.open(function () {
-  obj.set({foo: 'bar'})
-  console.log(obj.key.toString('hex'))
+var feed = new Feed('./feed')
+feed.open(function () {
+  feed.set({foo: 'bar'})
+  console.log(feed.key.toString('hex'))
 })
 ```
 
 In another process:
 
 ```javascript
-var obj = new ObjectFeed('./another-feed', '<KEY FROM ABOVE>')
-obj.on('update', function (value) {
+var feed = new Feed('./another-feed', '<KEY FROM ABOVE>')
+feed.on('update', function (value) {
   console.log(value) // === {foo: 'bar'}
 })
 ```
